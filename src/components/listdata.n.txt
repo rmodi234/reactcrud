@@ -1,0 +1,100 @@
+import React, { useState  } from "react";
+import { Modal, Button } from "react-bootstrap";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+function ListData(props) {
+  const lops = props.daa;
+  const [count, setCount] = useState(false);
+  // const [counts,setCounts]=useState('');
+ 
+  function handelDelete(e) {
+    e.preventDefault();
+    const id = e.target.id;
+    console.log(id);
+    fetch("http://127.0.0.1:8000/api/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    }).then(res => {
+      window.location.reload();
+    });
+  }
+
+  function handelEdit(e) {
+    e.preventDefault();
+    setCount(e.target.value);
+    const id = e.target.id;
+    fetch("http://127.0.0.1:8000/api/singledetails", {
+      method: "POST",
+      mode: "cors", // no-cors, cors, *same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    })
+      .then(res => res.json())
+  }
+ 
+  function handelClose(e) {
+    window.location.reload();
+  }
+  
+  return (
+    <React.Fragment>
+      <tr>
+        <td />
+        <td>{lops.name}</td>
+        <td>{lops.details}</td>
+        <td>{lops.type}</td>
+        <td>{lops.image}</td>
+        <td>
+          <button onClick={handelEdit} value="true" id={lops.id}>
+            Edit
+          </button>
+        </td>
+        <td>
+          <button onClick={handelDelete} value={lops.id}>
+            Delete
+          </button>
+        </td>
+      </tr>
+
+      <Modal show={Boolean(count)}>
+        <Modal.Header>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <input placeholder="name" refs="name" />
+            <br />
+            <br />
+            <input placeholder="details" refs="details" />
+            <br />
+            <br />
+            <input placeholder="type" refs="type" />
+            <br />
+            <br />
+            <input type="submit" />
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handelClose} value="false" variant="secondary">
+            Close
+          </Button>
+          <Button variant="primary">Save Changes</Button>
+        </Modal.Footer>
+      </Modal>
+    </React.Fragment>
+  );
+}
+
+export default ListData;
