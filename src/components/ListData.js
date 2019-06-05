@@ -4,16 +4,13 @@ import Button from 'react-bootstrap/Button'
 class ListData extends React.Component {
   constructor(props) {
     super(props);
-    
+                      
     this.state = {
       data: props.daa,
       name:'',
       details:'',
       type:'',
       tmp_id:'',
-      tmp_name:'',
-      tmp_details:'',
-      tmp_type:'',
       status:false
     };
     
@@ -57,9 +54,9 @@ class ListData extends React.Component {
       e.preventDefault();
       // console.log(this.refs.name.value);
       const id =this.state.tmp_id;
-      const name=this.state.tmp_name;
-      const details=this.state.tmp_details;
-      const type=this.state.tmp_type;
+      const name=this.state.name;
+      const details=this.state.details;
+      const type=this.state.type;
       fetch("http://127.0.0.1:8000/api/edit", {
         method: "POST",
         headers: {
@@ -75,15 +72,15 @@ class ListData extends React.Component {
   handelname  = (e) =>{
     e.preventDefault();
     console.log(e.target.value)
-    this.setState({tmp_name: e.target.value});
+    this.setState({name: e.target.value});
   }
   handeldetails  = (e) =>{
     e.preventDefault();
-    this.setState({tmp_details: e.target.value});
+    this.setState({details: e.target.value});
   }
   handeltype  = (e) =>{
     e.preventDefault();
-    this.setState({tmp_type: e.target.value});
+    this.setState({type: e.target.value});
   }
   render() {
     return (

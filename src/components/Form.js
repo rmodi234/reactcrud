@@ -50,7 +50,7 @@ class Forms extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input ref="name" />
+          <input placeholder="name" ref="name" />
         </label>
         <label>
           Details:
