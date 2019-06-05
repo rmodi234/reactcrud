@@ -9,21 +9,6 @@ class Forms extends React.Component {
     };
   }
 
-  //   handleName = event => {
-  //     this.setState({
-  //       name: event.target.value
-  //     });
-  //   };
-  //   handleDetails = event => {
-  //     this.setState({
-  //       details: event.target.value
-  //     });
-  //   };
-  //   handleType = event => {
-  //     this.setState({
-  //       type: event.target.value
-  //     });
-  //   };
 
   handleSubmit = event => {
     event.preventDefault();
