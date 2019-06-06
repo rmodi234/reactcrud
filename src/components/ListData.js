@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button'
+
+import Hey from './Helper';
 class ListData extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ class ListData extends React.Component {
       tmp_id:'',
       status:false
     };
+    console.log(<Hey/>)
     
   }
   handelDelete = event =>{
@@ -28,6 +31,7 @@ class ListData extends React.Component {
         id: id
       })
     }).then(res =>console.log(res));
+    
   }
   handelSingledata=(event)=>{
     event.preventDefault();

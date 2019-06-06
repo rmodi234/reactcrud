@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import List from "./components/List";
 import Forms from "./components/Form";
 // import Example from "./components/Test"
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 class App extends React.Component {
   constructor(props) {
     super(props);
