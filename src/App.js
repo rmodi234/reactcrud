@@ -27,8 +27,8 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
-        <Route path="./#/list/" component={()=><List info={listdata}/>} />
-        <Route path="./#/form/" component={Forms} />
+        <Route path="/list/" component={()=><List info={listdata}/>} />
+        <Route path="/form/" component={Forms} />
       </Router>
     );
   }
